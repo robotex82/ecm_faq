@@ -10,6 +10,34 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20120911134026) do
+
+  create_table "ecm_faq_categories", :force => true do |t|
+    t.string   "locale"
+    t.string   "name"
+    t.text     "short_description"
+    t.text     "long_description"
+    t.string   "markup_language"
+    t.integer  "ecm_faq_items_count", :default => 0, :null => false
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "parent_id"
+    t.integer  "depth"
+    t.string   "slug"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+  end
+
+  create_table "ecm_faq_items", :force => true do |t|
+    t.text     "question"
+    t.text     "answer"
+    t.integer  "ecm_faq_category_id"
+    t.integer  "position"
+    t.string   "markup_language"
+    t.datetime "published_at"
+    t.string   "slug"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
 
 end
